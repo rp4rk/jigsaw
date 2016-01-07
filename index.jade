@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Puzzle POC
+    link(rel='stylesheet', href='css/normalize.css')
+    link(rel='stylesheet', href='css/style.css')
+  body
+    header
+      h1 Jigsaw
+      nav
+        button.btnHowTo How To
+        button.btnPlay Play
+    .container.how-to
+      .wrapper
+        .text-wrap
+          h1 Instructions
+          p  
+          ol
+            li Drag and drop the puzzle pieces into the correct slot.
+            li Once you have them in the correct order, you win!
+          button.btnPlay.shadowed Play!
+    .container.puzzle
+      .tray
+      .puzzle-board
+    .container.winner
+      .wrapper
+        .text-wrap
+          h1 You Won!
+          h2 Congratulations!
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
+    script(src='js/index.js')

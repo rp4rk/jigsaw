@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  height: 90%;
+  position: relative;
+  margin-top: 10vh;
+  
+  display: inline-block;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 1rem;
+}
+
+html,body {
+  background-color: #e7e7e7;
+  width: 300vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-size: 0; // Remove spacing between inline-block elements
+}
+
+header {
+  position: fixed;
+  width: 100vw;
+  height: 10%;
+  background-color: #07020D;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 25px;
+  font-size: 1rem;
+  color: white;
+  
+  h1 {
+    display: inline;
+  }
+}
+
+nav {
+  float: right;
+}
+
+button {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #CFCCD6;
+  padding: 10px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  
+  
+  
+  &:hover {
+    color: #DA627D;
+    border-bottom: 2px solid #DA627D;
+  }
+}
+
+.shadowed {
+  box-shadow: 0 3px 5px rgba(0,0,0, 0.1);
+  display: block;
+  margin: 0 auto 10px;
+  font-weight: 700;
+  
+  &:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  }
+}
+
+.text-wrap {
+  max-width: 960px;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 3px 10px rgba(0,0,0, 0.1);
+}
+
+.how-to {
+  color: #222;
+  
+  h1 {
+    margin-left: 1rem;
+  }
+}
+
+.tray {
+  background-color: rgba(0,0,0, 0.1);
+  width: 50%;
+  height: 100%;
+  overflow: visible;
+  
+  position: absolute;
+  padding: 5px;
+  font-size: 0;
+}
+
+.puzzle-board {
+  max-width: 500px;
+  width: 500px;
+  height: 500px;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0, 0.1);
+  z-index: 0;
+  
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  font-size: 0; // Fixes gaps in inline-block
+  backface-visibility: hidden;
+}
+
+.puzzle-slot {
+  border-right: 1px solid rgba(0,0,0, 0.2);
+  border-top: 1px solid rgba(0,0,0, 0.2);
+  display: inline-block;
+  margin: 0;
+}
+
+.puzzle-piece {
+  background-color: rgba(0,0,0, 0.1);
+  background-repeat: no-repeat;
+  border: 1px rgba(0,0,0, 0.1);
+  display: inline-block;
+  z-index: 1;
+  
+  backface-visibility: hidden;
+  transition: transform 0.3s ease,
+              filter 0.3s ease,
+              box-shadow 0.3s ease;
+  &.animate-zoom {
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 3px 10px rgba(0,0,0, 0.25);
+      filter: brightness(1.2);
+      z-index: 2;
+      cursor: pointer;
+    }
+  }
+}
+
+.winner .text-wrap{
+  padding: 20px;
+  text-align: center;
+}
+
+
