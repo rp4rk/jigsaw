@@ -2,6 +2,7 @@
  * Using ES6 would usually assume the target JS engine supports it.
  * This project uses Babel to transpile from ES6 -> ES5
  * A class based approach lends itself to easy configuration and multiple instances.
+ * The jigsaw would need to be easily configurable for different users.
  */
 class PuzzleBoard {
   constructor({board, tray, rows, columns, image}) {
@@ -22,7 +23,7 @@ class PuzzleBoard {
             src: image,
             height: img.height,
             width: img.width
-          }
+          };
           resolve(image);
         };
         img.src = image;
@@ -36,12 +37,12 @@ class PuzzleBoard {
         this.board.height(`${this.image.height}px`);
         this.initPuzzle();
       }
-    )
+    );
   }
 
   /**
    * Functionally identical to iterating over a 2 dimensional array
-   * This project uses Babel to transpile from ES6 -> ES5
+   * We store the pieces in a list for match verficiation
    */
   initPuzzle() {
     let i;
@@ -105,7 +106,7 @@ class PuzzleBoard {
    */
   checkAll() {
     let checkPieces = this.pieces.filter(piece => {
-      return piece.isMatching == false;
+      return piece.isMatching === false;
     });
 
     // We've won!
@@ -156,6 +157,7 @@ class PuzzlePiece {
     /**
      * Enable drag and drop functionality, flag matches.
      * We can ensure only this puzzle's pieces and slots are being matched by checking the tray.
+     * This assumes there could be multiple puzzles in the same document scope.
      */
     let boardSelector = this.board.boardSelector;
     $(this.element).draggable({
@@ -169,13 +171,10 @@ class PuzzlePiece {
         let slotRect = slot[0].getBoundingClientRect();
         let margin = 20;
 
-        if (pieceRect.top >= slotRect.top-margin
-            && pieceRect.top <= slotRect.top+margin
-            && pieceRect.left >= slotRect.left-margin
-            && pieceRect.left <= slotRect.left+margin) {
-          isMatch(true)
+        if (pieceRect.top >= slotRect.top-margin && pieceRect.top <= slotRect.top+margin && pieceRect.left >= slotRect.left-margin && pieceRect.left <= slotRect.left+margin) {
+          isMatch(true);
         } else {
-          isMatch(false)
+          isMatch(false);
         }
       }
     }).mousedown(function(e) {
@@ -235,11 +234,11 @@ $(document).ready(() => {
 
   $('.btnHowTo').click(e => {
     $('html, body').animate({scrollLeft: 0 }, 300);
-  })
+  });
 
 });
 
-// Fix scroll
+// Fix scroll on refresh
 $(window).on('beforeunload', function() {
     $('html, body').animate({scrollLeft: 0 }, 0);
 });
